@@ -1,6 +1,11 @@
 import { Suspense } from 'react';
 import UserTableServer from '@/components/UserTableServer';
 
+export const metadata = {
+  title: 'A-Safe test | Users',
+  description: 'This is a Next / React challenge',
+};
+
 export default function UsersPage({
   searchParams,
 }: {

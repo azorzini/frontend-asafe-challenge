@@ -2,6 +2,11 @@ import './globals.css';
 import { Providers } from '@/components/Providers';
 import Header from '@/components/Header';
 
+export const metadata = {
+  title: 'A-Safe test app',
+  description: 'This is a Next / React challenge',
+};
+
 export default function RootLayout({
   children,
 }: {
