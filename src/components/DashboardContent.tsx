@@ -150,9 +150,9 @@ export default function DashboardContent() {
       <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 h-full">
           <h2 className="text-xl font-bold text-black dark:text-white mb-2">
-            Sales Over Time
+            Tasks Completion
           </h2>
-          <Line data={salesData} options={defaultChartOptions} />
+          <Doughnut data={tasksData} options={defaultChartOptions} />
         </div>
       </div>
 
@@ -168,9 +168,9 @@ export default function DashboardContent() {
       <div className="w-full sm:w-1/2 lg:w-1/3 p-2">
         <div className="bg-white dark:bg-gray-800 rounded-lg shadow p-4 h-full">
           <h2 className="text-xl font-bold text-black dark:text-white mb-2">
-            Tasks Completion
+            Sales Over Time
           </h2>
-          <Doughnut data={tasksData} options={defaultChartOptions} />
+          <Line data={salesData} options={defaultChartOptions} />
         </div>
       </div>
 

@@ -11,7 +11,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <Providers>
-          <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-500 relative">
+          <div className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-500 relative pt-16">
             <Header />
             {children}
           </div>
