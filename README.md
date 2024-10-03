@@ -17,9 +17,11 @@
   - [Google Lighthouse performance score](#google-lighthouse-performance-score)
 
 ## Introduction
-This small project is a solution to the A-Safe Frontend Challenge (description in react-front-test.pdf). 
+This small project is a solution to the A-Safe Frontend Challenge (description in react-front-test.pdf).
 I've tried to make it as simple as possible with the required features.
-The person who sent this challenge to me mentioned that is tipically there's a 2h time limit for the challenge which seems a bit short. I've made it in 10-12 hours.
+
+The person who sent this challenge to me mentioned that is typically there's a 2h time limit for the challenge which seems a bit short.
+I put myself a time limit of 10-12 hours to make it.
 
 The application is built with Next.js and TypeScript, utilizing features like server-side rendering, dynamic routing, and API routes.
 
