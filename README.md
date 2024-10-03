@@ -1,36 +1,173 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Table of Contents
+- [Introduction](#introduction)
+- [Demo](#demo)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Running the Application](#running-the-application)
+    - [Development](#development)
+    - [Production Build](#production-build)
+- [Testing](#testing)
+- [Project Structure](#project-structure)
+- [Additional Information](#additional-information)
+  - [Code Quality](#code-quality)
+  - [Google Lighthouse performance score](#google-lighthouse-performance-score)
+
+## Introduction
+This small project is a solution to the A-Safe Frontend Challenge (description in react-front-test.pdf).
+I've tried to make it as simple as possible with the required features.
+
+The person who sent this challenge to me mentioned that is typically there's a 2h time limit for the challenge which seems a bit short.
+I put myself a time limit of 10-12 hours to make it.
+
+The application is built with Next.js and TypeScript, utilizing features like server-side rendering, dynamic routing, and API routes.
+
+## Demo
+A live demo of the application is available at: [https://a-safe-frontend-challenge.netlify.app/](https://a-safe-frontend-challenge.netlify.app/)
+Any user can login with any credentials.
+
+## Features
+- **User Authentication**: Secure login and logout functionality using NextAuth.js.
+- **Protected Routes**: Certain pages are accessible only to authenticated users.
+- **User Management**: Display and manage a list of users fetched from an API.
+- **Responsive Design**: Mobile-friendly layout with a responsive header and navigation.
+- **Dark Mode Support**: Toggle between light and dark themes.
+- **Unit Testing**: Comprehensive tests using Jest and React Testing Library.
+
+## Technologies Used
+- **Next.js**
+- **React**
+- **TypeScript**
+- **Tailwind CSS**
+- **NextAuth.js**
+- **Jest**
+- **React Testing Library**.
+- **Netlify**
+- **ESLint & Prettier**
+- **@headlessui/react**
+- **@heroicons/react**
+- **@tanstack/react-table**
+- **Chart.js**
+- **clsx**
+- **use-debounce**
+- **Next-themes**
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
+- **Node.js**: Version 20.x
+- **Yarn**: Recommended package manager.
 
+### Installation
+
+#### Install Dependencies
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+yarn install
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### Environment Variables
+Create a `.env.local` file in the root directory and add the following environment variables:
+```dotenv
+NEXTAUTH_SECRET=your-secure-secret
+NEXTAUTH_URL=http://localhost:3000
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+- **NEXTAUTH_SECRET**: A secure random string for NextAuth.js.
+- **NEXTAUTH_URL**: The base URL of your application.
+- **NEXT_PUBLIC_APP_URL**: Public URL accessible in the browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Running the Application
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+#### Development
+To start the development server with hot reloading:
+```bash
+yarn dev
+```
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-## Learn More
+#### Production Build
+To build and start the application in production mode:
+```bash
+yarn build
+yarn start
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Testing
+The project includes unit tests for components and hooks using Jest and React Testing Library.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### Running Tests
+```bash
+yarn test
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Project Structure
+```plaintext
+frontend-asafe-challenge
+├── __tests__
+│   └── components
+│       ├── Header.test.tsx
+│       └── UserTableClient.test.tsx
+├── src
+│   ├── app
+│   │   ├── api
+│   │   │   ├── auth
+│   │   │   │   └── [...nextauth]
+│   │   │   │       └── route.ts
+│   │   │   └── users
+│   │   │       └── route.ts
+│   │   ├── fonts
+│   │   │   ├── GeistMonoVF.woff
+│   │   │   └── GeistVF.woff
+│   │   ├── hooks
+│   │   │   └── useUsers.ts
+│   │   ├── login
+│   │   │   └── page.tsx
+│   │   ├── protected
+│   │   │   ├── favicon.ico
+│   │   │   ├── globals.css
+│   │   │   ├── layout.tsx
+│   │   │   └── page.tsx
+│   └── components
+│       ├── DashboardContent.tsx
+│       ├── Header.tsx
+│       ├── Providers.tsx
+│       ├── ThemeToggle.tsx
+│       ├── UserTableClient.tsx
+│       ├── UserTableServer.tsx
+├── utils
+│   ├── chartjs.ts
+│   └── middleware.ts
+├── .env
+├── .eslintrc.json
+├── .gitignore
+├── .prettierrc
+├── jest.config.ts
+├── jest.setup.ts
+├── next-env.d.ts
+├── next.config.mjs
+├── package.json
+├── postcss.config.mjs
+├── README.md
+├── tailwind.config.ts
+├── tsconfig.json
+├── react-front-test.pdf
+└── yarn.lock
+```
 
-## Deploy on Vercel
+## Additional Information
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Code Quality
+- **ESLint**: Linting configured with recommended settings.
+- **Prettier**: Code formatting enforced on save.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Google Lighthouse performance score
+
+- **/** 100
+- **/login** 100
+- **/protected** 100
+- **/protected/dashboard** 89
+- **/protected/users** 97
+
