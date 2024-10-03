@@ -52,7 +52,7 @@ export default function useUsers(
         const res = await fetch(
           `/api/users?page=${pagination.pageIndex + 1}&pageSize=${
             pagination.pageSize
-          }&keyword=${encodeURIComponent(debouncedKeyword)}`
+          }&q=${encodeURIComponent(debouncedKeyword)}`
         );
         const json = await res.json();
         setData(json.results);
