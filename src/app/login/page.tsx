@@ -20,7 +20,7 @@ export default function LoginPage() {
     await signIn('credentials', {
       username: userInfo.username,
       password: userInfo.password,
-      callbackUrl: '/protected',
+      callbackUrl: `${process.env.NEXT_PUBLIC_APP_URL}/protected`,
     });
   };
 
@@ -45,7 +45,7 @@ export default function LoginPage() {
           onChange={(e) =>
             setUserInfo({ ...userInfo, username: e.target.value })
           }
-          className="border p-2 rounded"
+          className="border p-2 rounded text-black dark:text-white"
         />
         <input
           type="password"
@@ -54,7 +54,7 @@ export default function LoginPage() {
           onChange={(e) =>
             setUserInfo({ ...userInfo, password: e.target.value })
           }
-          className="border p-2 rounded"
+          className="border p-2 rounded text-black dark:text-white"
         />
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">
           Sign In

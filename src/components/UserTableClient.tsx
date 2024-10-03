@@ -86,7 +86,7 @@ export default function UserTableClient({
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           placeholder="Search..."
-          className="border p-2 rounded transition-colors duration-500"
+          className="border p-2 rounded transition-colors duration-500 text-black dark:text-white"
         />
       </div>
       <div className="max-w-full overflow-x-auto">
@@ -161,7 +161,7 @@ export default function UserTableClient({
         >
           Previous
         </button>
-        <span>
+        <span className={'text-black dark:text-white'}>
           Page {pagination.pageIndex + 1} of {pageCount}
         </span>
         <button

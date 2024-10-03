@@ -55,7 +55,11 @@ export default function Header() {
             <ThemeToggle />
             {session ? (
               <button
-                onClick={() => signOut({ callbackUrl: '/' })}
+                onClick={() =>
+                  signOut({
+                    callbackUrl: `${process.env.NEXT_PUBLIC_APP_URL}/`,
+                  })
+                }
                 className="underline text-black dark:text-white"
                 data-testid="sign-out-button"
               >
@@ -131,7 +135,9 @@ export default function Header() {
                 <button
                   onClick={() => {
                     setIsMobileMenuOpen(false);
-                    signOut({ callbackUrl: '/' });
+                    signOut({
+                      callbackUrl: `${process.env.NEXT_PUBLIC_APP_URL}/`,
+                    });
                   }}
                   className="underline text-black dark:text-white"
                 >
