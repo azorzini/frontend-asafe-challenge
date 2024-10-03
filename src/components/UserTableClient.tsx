@@ -73,7 +73,13 @@ export default function UserTableClient({
       pagination,
       globalFilter: keyword,
     },
-    onPaginationChange: setPagination,
+    onPaginationChange: (updater) => {
+      setPagination((prev) => {
+        const newPagination =
+          typeof updater === 'function' ? updater(prev) : updater;
+        return { ...newPagination, keyword: prev.keyword };
+      });
+    },
     onGlobalFilterChange: setKeyword,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),

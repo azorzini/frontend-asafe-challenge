@@ -13,6 +13,7 @@ interface User {
 interface PaginationState {
   pageIndex: number;
   pageSize: number;
+  keyword: string;
 }
 
 interface UseUsersResult {
@@ -35,14 +36,23 @@ export default function useUsers(
   const [pageCount, setPageCount] = useState(initialPageCount);
   const [loading, setLoading] = useState(false);
   const [keyword, setKeyword] = useState(initialKeyword);
+
+  const [debouncedKeyword] = useDebounce(keyword, 500);
+
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: initialPageIndex,
     pageSize: 30,
+    keyword: initialKeyword,
   });
-  const [debouncedKeyword] = useDebounce(keyword, 500);
 
   useEffect(() => {
-    setPagination((prev) => ({ ...prev, pageIndex: 0 }));
+    if (debouncedKeyword !== pagination.keyword) {
+      setPagination((prev) => ({
+        ...prev,
+        pageIndex: 0,
+        keyword: debouncedKeyword,
+      }));
+    }
   }, [debouncedKeyword]);
 
   useEffect(() => {
@@ -52,7 +62,7 @@ export default function useUsers(
         const res = await fetch(
           `/api/users?page=${pagination.pageIndex + 1}&pageSize=${
             pagination.pageSize
-          }&q=${encodeURIComponent(debouncedKeyword)}`
+          }&q=${encodeURIComponent(pagination.keyword)}`
         );
         const json = await res.json();
         setData(json.results);
@@ -63,8 +73,9 @@ export default function useUsers(
         setLoading(false);
       }
     };
+
     fetchData();
-  }, [pagination, debouncedKeyword]);
+  }, [pagination]);
 
   return {
     data,
